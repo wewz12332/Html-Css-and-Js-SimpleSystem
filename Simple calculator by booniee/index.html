@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <head>
+        <title>Simple Calculator</title>
+    </head>
+    <body>
+        <input type="text" id="display"><br><br>
+
+        <button onclick="appendDisplay('1')">1</button>
+        <button onclick="appendDisplay('2')">2</button>
+        <button onclick="appendDisplay('3')">3</button>
+        <button onclick="appendDisplay('4')">4</button>
+        <br>
+        <button onclick="appendDisplay('5')">5</button>
+        <button onclick="appendDisplay('6')">6</button>
+        <button onclick="appendDisplay('7')">7</button>
+        <button onclick="appendDisplay('8')">8</button>
+        <br>
+        <button onclick="appendDisplay('9')">9</button>
+        <button onclick="appendDisplay('0')">0</button>
+        <button onclick="appendDisplay('+')">+</button>
+        <button onclick="appendDisplay('-')">-</button>
+        <br>
+        <button onclick="appendDisplay('/')">/</button>
+        <button onclick="adecreaseDisplay('/')">/</button>
+        <button onclick="appendDisplay('.')">.</button>
+        <button onclick="adecreaseDisplay('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <br>
+        <button onclick="clearDisplay()">AC</button>
+        <button onclick="decreaseDisplay()"><=</button>
+    </body>
+    <script src="index.js"></script>
+</html>
