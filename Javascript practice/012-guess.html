@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<header>
+    <title>Javascript practice</title>
+</header>
+<body>
+
+        <h2>Guessing Game</h2>
+        <p>Guess a number between 1 - 10: </p>
+
+        <input type="number" id="guessInput" placeholder="Enter your number here.">
+        <button onclick="checkGuess()">Submit</button>
+
+        <p id="result"></p>
+
+        <script>
+
+            let secretNumber = Math.floor(Math.random() * 10 + 1);
+            
+            function checkGuess(){
+            const guess = Number(document.getElementById("guessInput").value);
+            const result = document.getElementById("result");
+
+                if (guess < 1 || guess > 10 || isNaN(guess)){
+                    result.textContent = "Only 1-10 Numbers!"
+                    return;
+                }
+
+            if (secretNumber === guess) {
+                result.textContent = "Correct! You guess it!";
+            } else if(secretNumber < guess){
+                result.textContent = "Too high!!! Try again";
+            } else if(secretNumber > guess) {
+                result.textContent = "Too low! Try again";
+            } else if (guess === '11'){
+                result.textContent = "Guess only 1-10 number!";
+            } else {
+                result.textContent = "Invalid Number";
+            }
+            }
+           
+        </script>
+
+</body>
+</html>

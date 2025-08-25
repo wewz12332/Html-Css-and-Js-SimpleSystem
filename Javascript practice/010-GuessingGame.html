@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<header>
+    <title>Javascript practice</title>
+</header>
+<body>
+
+        <h1>Number Guessing Game</h1>
+        <p>Guess a number between 1 to 10:</p>
+        
+        <input type="text" id="guessInput" placeholder="Enter your number here." min="1" max="10">
+        <button onclick="checkGuess()">Submit Guess</button>
+
+        <p id = "result"></p>
+
+         <script>
+            
+            let secretNumber = Math.floor(Math.random() * 10) + 1;
+
+            function checkGuess(){
+                const guess = Number(document.getElementById("guessInput").value);
+                const result = document.getElementById("result");
+                if (guess === secretNumber){
+                    result.textContent = "Corrrect! You guessed it!";
+                } else if (guess < secretNumber) {
+                    result.textContent = "Too low! Try again";
+                } else if (guess > secretNumber){
+                    result.textContent = "Too high! Try again";
+                } else {
+                    result.textContent = "Please enter a valid number!";
+                }
+
+            }
+
+         </script>
+</body>
+</html>

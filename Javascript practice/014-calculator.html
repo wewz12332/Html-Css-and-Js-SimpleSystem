@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+    <title>practice</title>
+    <body style="
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    ">
+        <label style="font-family: 'Courier New', Courier, monospace; font-weight: 600;" for="1st">1st Number: </label>
+        <input style="
+            padding: 5px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+        " type="text" id="1st" placeholder="Enter here.">
+
+        <label style="font-family: 'Courier New', Courier, monospace; font-weight: 600;" for="2nd">2nd Number: </label>
+        <input style="
+            padding: 5px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+        " type="text" id="2nd" placeholder="Enter here.">
+
+        <button style="
+            padding: 5px 20px;
+            border: 1px solid #007bff;
+            border-radius: 5px;background-color: #007bff;
+            color: rgb(243, 236, 236);
+            font-family: 'Courier New', Courier, monospace;
+
+        " onclick="multiply()">Multiply</button>
+        <button style="
+            padding: 5px 20px;
+            border:none;
+            border-radius: 5px;
+            background-color: #22BABB;
+            color: rgb(243, 236, 236);
+            font-family: 'Courier New', Courier, monospace;
+        " onclick="addition()">Addition</button>
+
+        <button style="
+             padding: 5px 28px;
+            border: none;
+            border-radius: 5px;background-color:#F24405;
+            color: rgb(243, 236, 236);
+            font-family: 'Courier New', Courier, monospace;
+        " onclick="divide()">Divide</button>
+
+        <button style="
+            padding: 5px 45px;
+            border: none;
+            border-radius: 5px;background-color: #d60a0a;
+            color: rgb(243, 236, 236);
+            font-family: 'Courier New', Courier, monospace; 
+        " onclick="reset()">AC</button>
+
+        <p id="result">The result is: </p>
+
+        <script>
+            function multiply(){
+                let num1 = parseFloat(document.getElementById("1st").value);
+                let num2 = parseFloat(document.getElementById("2nd").value);
+                document.getElementById("result").textContent = "The result is: " + (num1 * num2);
+            }
+
+            function divide(){
+                let num1 = parseFloat(document.getElementById("1st").value);
+                let num2 = parseFloat(document.getElementById("2nd").value);
+
+                if (num2 === 0){
+                    document.getElementById("result").textContent = "Cannot divide to zero!";
+                } else {
+                    document.getElementById("result").textContent = "The result is: " + (num1 / num2);
+                }
+            }
+             function addition(){
+                let num1 = parseFloat(document.getElementById("1st").value);
+                let num2 = parseFloat(document.getElementById("2nd").value);
+                document.getElementById("result").textContent = "The result is: " + (num1 + num2);
+            }
+
+
+            function reset(){
+                document.getElementById("1st").value = "";
+                document.getElementById("2nd").value = "";
+                document.getElementById("result").textContent = "The result is: ";
+
+            }
+        </script>
+
+
+    </body>
+</head>
+</html>

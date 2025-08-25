@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<header>
+    <title>Javascript practice</title>
+<body>
+
+    <button 
+     onclick = "
+        console.log(`Cart Quantity: ${cartQuantiy}
+        `);
+    ">Show Quantity</button>
+
+    <button onclick="
+        cartQuantiy = cartQuantiy + 1;
+        console.log(`Cart Quantity: ${cartQuantiy}`)
+    "
+    
+    >Add to Cart</button>
+
+    <button onclick="
+        cartQuantiy = cartQuantiy + 2;
+        console.log(`Cart Quantity: ${cartQuantiy}`)
+    "
+    >+2</button>
+
+    <button onclick = "
+        cartQuantiy = cartQuantiy + 3;
+        console.log(`Cart Quantity: ${cartQuantiy}` )
+    "
+    >+3</button>
+
+    <button onclick="
+    cartQuantiy = 0;
+    console.log (`cartQuantiy: ${cartQuantiy}`)
+    "
+    >Reset Cart</button>
+
+
+
+
+    <script>
+       let cartQuantiy = 0;
+    </script>
+</body>
+</html>
