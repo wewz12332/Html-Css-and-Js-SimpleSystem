@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom right, #f9fafb, #e4e9f7);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 0.8s ease-in-out;
+}
+@keyframes fadeIn{
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #2e3a47, #3a4452);
+    padding: 12px 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    color: rgb(238, 234, 226);
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #f7b733;
+}
+
+.nav ul {
+    list-style: none;
+}
+
+.nav ul li {
+    display: inline-block;
+    margin-right: 22px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav ul li a:hover {
+    color: #f7b733;
+}
+
+.btn button {
+    border-radius: 4px;
+    font-size: 13px;
+    border: none;
+    padding: 7px 16px;
+    background-color: #f7b733;
+    color: rgb(36, 35, 35);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn button:hover {
+    background-color: #ffcc60;
+}
+.html{
+    background-color: #E34C26;
+    border-radius: 5px;
+}
+.css {
+    background-color: #a2be24;
+    border-radius: 5px;
+}
+.js {
+    background-color: #F0DB4F;
+    border-radius: 5px;
+}
+.python{
+    background-color: #A5B07D;
+    border-radius: 5px;
+}
+.c1{
+    background-color: #A179DC;
+    border-radius: 5px;
+}
+.c2{
+    background-color: #5E97D0 ;
+    border-radius: 5px;
+}
+.grid-skills{
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    height: 300px;
+    justify-content: center;
+    margin-top: 130px;
+    grid-gap: 20px;
+    text-align: center;
+}
+.grid-skills p{
+    font-weight: bold;
+    color: black;
+}
+.img-skills{
+    width: 100px;
+    height: 100px;
+}
+.skills{
+    position: relative;
+}
+.skills p{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 25px;
+    text-decoration: underline #4287e9;
+    position: absolute;
+    right: 630px;
+    top: 80px;
+
+}
