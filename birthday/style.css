@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #c084fc, #a855f7, #9333ea);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+.container {
+  max-width: 900px;
+  width: 100%;
+}
+.birthday-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center;
+  animation: fadeUp 1s ease-in-out;
+}
+.greeting {
+  font-size: 33px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  color: #9333ea;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #e9d5ff, 0 0 20px #c084fc;
+  animation: glow 2s infinite alternate;
+}
+.greeting span {
+  color: #a855f7;
+}
+.date {
+  color: #555;
+  margin-bottom: 15px;
+  font-family: 'Courier New', Courier, monospace;
+}
+.intro {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+.celebrant {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #a855f7;
+  margin: 20px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+}
+.wish {
+  background: #f3e8ff;
+  border-left: 5px solid #9333ea;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 10px;
+  text-align: left;
+  line-height: 1.6;
+  font-family: 'Courier New', Courier, monospace;
+}
+.wish p{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 300;
+}
+.wish:hover{
+    background-color: #d4c6e2;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.music {
+  margin: 20px 0;
+}
+.music p {
+  margin-bottom: 10px;
+  font-weight: 800;
+  font-family: 'Courier New', Courier, monospace;
+}
+.photo-of-us {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+}
+.photo-of-us img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.3s, border 0.3s;
+  border: 3px solid #c084fc;
+}
+.photo-of-us img:hover {
+  transform: scale(1.07);
+  border-color: #9333ea;
+}
+.hearts {
+  position: fixed;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  font-size: 2rem;
+  opacity: 0.8;
+  pointer-events: none;
+}
+.hearts span {
+  animation: floatUp 6s linear infinite;
+}
+.hearts span:nth-child(2) { animation-delay: 1s; }
+.hearts span:nth-child(3) { animation-delay: 2s; }
+.hearts span:nth-child(4) { animation-delay: 3s; }
+.hearts span:nth-child(5) { animation-delay: 4s; }
+.hearts span:nth-child(6) { animation-delay: 5s; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes glow {
+  from { text-shadow: 0 0 10px #d8b4fe, 0 0 20px #c084fc; }
+  to { text-shadow: 0 0 20px #9333ea, 0 0 40px #a855f7; }
+}
+@keyframes floatUp {
+  from { transform: translateY(0) scale(1); opacity: 1; }
+  to { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+}
+@media (max-width: 600px) {
+  .greeting { font-size: 2rem; }
+  .celebrant { width: 140px; height: 140px; }
+  .photo-of-us { grid-template-columns: repeat(2, 1fr); }
+}
