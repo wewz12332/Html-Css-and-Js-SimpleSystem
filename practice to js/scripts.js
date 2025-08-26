@@ -1,24 +1,26 @@
-const myButton = document.getElementById("myButton");
-const myLabel = document.getElementById("myLabel");
+const display = document.getElementById("display");
+const mySubmit = document.getElementById("mySubmit");
+const result = document.getElementById("result");
 
-const min = 1;
-const max = 10;
-let randomNum;
+let bmi = 0;
 
-myButton.onclick = function(){
 
-    randomNum = Math.floor(Math.random() * max) + min;
-    myLabel.textContent = randomNum;
+mySubmit.onclick = function(){
+    bmi = display.value;
+    bmi = Number(bmi);
 
-while(true){
-        const displayNum = Number(document.getElementById("display").value);
-    
-        if (randomNum === displayNum){
-        window.alert("You guess the right number!");
-        break;
-    }  else {
-            window.alert("Try again!!!")
-            break;
-        }
+    if (bmi < 18.5){
+        result.textContent = "You are Under Weight!";
+    } else if (bmi >= 18.5 && bmi <= 24.9){
+        result.textContent = "You are Normal Weight!";
+    } else if (bmi >= 25.0 && bmi <= 29.9){
+        result.textContent = "You are Over Weight!";
+    } else if (bmi >= 30.0 && bmi <= 34.9){
+        result.textContent = "You are Obese!";
+    } else if (bmi >= 35.0){
+        result.textContent = "You are Extremely Obese!";
+    } else {
+        bmi = NaN;
+        result.textContent = "Numbers Only";
     }
 }
