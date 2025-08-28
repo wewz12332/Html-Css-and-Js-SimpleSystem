@@ -3,10 +3,22 @@
     <title>Simple calculator</title>
 </head>
 <body>
-    <h1>BMI Calculator</h1>
-    <input type="text" placeholder="Enter your BMI" id="display">
-    <button id="mySubmit">Submit</button>
+    <input type="checkbox" id="myCheckbox" name="card">
+    <label for="myCheckbox">Subscribe</label>
+    <br>
+    <input type="radio" id="visaBtn" name="card">
+    <label for="visaBtn">Visa</label>
+    <br>
+    <input type="radio" id="masterCardBtn" name="card">
+    <label for="masterCardBtn">MasterCard</label>
+    <br>
+    <input type="radio"paypalBtn id="paypalBtn" name="card">
+    <label for="paypalBtn">Paypal</label>
+    <br><br>
+    <button id="submitBtn" id="mySubmit">Submit</button>
+
     <p id="result"></p>
+    <p id="paymentResult"></p>
 </body>
 <script src="scripts.js"></script>
 </html>
