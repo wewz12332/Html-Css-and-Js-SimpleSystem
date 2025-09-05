@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Styled Calculator</title>
+</head>
+<body>
+  <div class="calculator">
+    <h2>Simple Calculator</h2>
+    <p style="      font-family: 'Courier New', Courier, monospace; font-weight: bold; color: gray;">by Bonnie</p>
+
+    <input id="num1" type="number" placeholder="First number">
+    <input id="num2" type="number" placeholder="Second number"><br>
+
+    <button onclick="calc('+')">+</button>
+    <button onclick="calc('-')">−</button>
+    <button onclick="calc('*')">×</button>
+    <button onclick="calc('/')">÷</button>
+    <button onclick="reset()">AC</button>
+    <button style="background-color: rgb(168, 26, 26);" onclick="decreased()">DEL</button>
+    
+
+    <p id="result">Result: </p>
+  </div>
+
+</body>
+<script src="scripts.js"></script>
+</html>

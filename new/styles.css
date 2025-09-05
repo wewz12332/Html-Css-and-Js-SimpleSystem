@@ -1,0 +1,380 @@
+/* Improved UI: variables, font import, subtle animations and focus states */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+/* Compact palette: cool (current-style, slightly tuned) */
+:root {
+  --bg-1: #566fe6;    /* deep blue */
+  --bg-2: #6f4bb3;    /* muted purple */
+  --accent: #675cf0;  /* primary CTA */
+  --accent-2: #4b3fc8; /* CTA shadow/hover */
+  --card-bg: #ffffffcc; 
+  --success: #26bd71;
+  --danger: #e14b4b;
+}
+
+/* OR: Soft teal palette (warmer alternative, good contrast) */
+:root {
+  --bg-1: #0ea5a4;    /* teal */
+  --bg-2: #2dd4bf;    /* aqua */
+  --accent: #0f766e;  /* deep teal CTA */
+  --accent-2: #115e59; /* CTA hover */
+  --card-bg: rgba(255,255,255,0.96);
+  --success: #16a34a;
+  --danger: #dc2626;
+}*/
+
+/* Quick dark-mode variables (toggle by swapping these into :root) */
+:root.dark {
+  --bg-1: #0b1220;
+  --bg-2: #121826;
+  --accent: #6c63ff;
+  --accent-2: #4940c8;
+  --card-bg: rgba(20,24,32,0.9);
+  --success: #34d399;
+  --danger: #fb6f6f;
+  --focus-ring: 0 0 0 6px rgba(108,99,255,0.12);
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(-45deg, var(--bg-1), var(--bg-2), var(--bg-1), var(--bg-2));
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  overflow: hidden;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.container {
+  width: 100%;
+  max-width: 480px; /* slightly wider for breathing room */
+  padding: 22px;
+}
+
+/* Card: softened, raised, subtle border gradient and entrance animation */
+.card {
+  position: relative;
+  padding: 28px 26px; /* reduced padding to make card smaller */
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,255,0.96));
+  box-shadow:
+    0 12px 28px rgba(24,30,60,0.10),
+    0 3px 12px rgba(108,99,255,0.05);
+  border: 1px solid rgba(108,99,255,0.06);
+  overflow: visible;
+  transition: transform 240ms cubic-bezier(.2,.9,.2,1), box-shadow 240ms ease;
+}
+
+/* soft decorative halo behind the card — adjusted for smaller card */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 20px;
+  background: linear-gradient(130deg, rgba(108,99,255,0.06), rgba(118,75,162,0.03));
+  filter: blur(14px);
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.card:hover::before { opacity: 1; }
+
+/* Slightly lift the card on hover (tuned for new size) */
+.card:hover {
+  transform: translateY(-6px) scale(1.003);
+  box-shadow:
+    0 22px 44px rgba(24,30,60,0.14),
+    0 6px 28px rgba(108,99,255,0.08);
+}
+
+h1 {
+  margin-bottom: 12px;
+  color: #393939;
+  font-weight: 800;
+  font-size: 2.4rem;
+  letter-spacing: 0.6px;
+  user-select: text;
+}
+
+/* Primary button: subtle gradient, improved padding, icon-ready */
+button {
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 12px 36px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 8px 26px rgba(108, 99, 255, 0.22);
+  transition: transform 0.16s ease, box-shadow 0.22s ease, filter 0.16s ease;
+  user-select: none;
+  margin-top: 12px;
+  min-width: 140px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  outline: none;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* subtle pressed state */
+button:hover:not(:disabled) {
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  box-shadow: 0 12px 36px rgba(87, 81, 212, 0.26);
+  transform: translateY(-2px) scale(1.02);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0) scale(0.995);
+  filter: brightness(0.98);
+}
+
+button:focus-visible {
+  box-shadow: var(--focus-ring);
+  border-radius: 999px;
+}
+
+/* Maintain disabled look but more integrated */
+button:disabled {
+  background: linear-gradient(180deg, #cfcfff, #d8d6ff);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  color: #fff;
+}
+
+/* Result card: cleaner typography, card-like look and animated icon */
+.result {
+  margin-top: 16px;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-height: 110px;
+  color: #333;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.46s cubic-bezier(.2,.9,.2,1), transform 0.46s cubic-bezier(.2,.9,.2,1);
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  user-select: text;
+  width: 100%;
+}
+
+/* visible state */
+.result.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* icon sizing and CSS-driven stroke color (so SVG inherits color) */
+.result .icon {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 auto;
+  transition: transform 300ms ease, filter 300ms ease;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ensure inner svg uses currentColor for stroke/fill where possible */
+.result .icon * {
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+/* subtle icon float on reveal */
+.result.visible .icon {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Passed / failed color schemes (use CSS vars) */
+.passed {
+  color: var(--success);
+  background: linear-gradient(180deg, #f1fbf5, #eaf8ef);
+  box-shadow: 0 8px 22px rgba(46,204,113,0.08), 0 0 16px 3px rgba(46,204,113,0.12);
+  border: 1px solid rgba(46,204,113,0.06);
+}
+
+.failed {
+  color: var(--danger);
+  background: linear-gradient(180deg, #fff6f6, #fdecec);
+  box-shadow: 0 8px 22px rgba(231,76,60,0.06), 0 0 16px 3px rgba(231,76,60,0.12);
+  border: 1px solid rgba(231,76,60,0.06);
+}
+
+/* result inner text */
+.result div {
+  user-select: text;
+  color: inherit;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Sum & Average smaller, more readable */
+.result .tip {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 8px;
+  color: var(--danger);
+  user-select: text;
+}
+
+/* smaller screens adjustments */
+@media (max-width: 460px) {
+  .card { padding: 30px 20px; border-radius: 16px; }
+  button#startBtn { width: 100%; padding: 14px 18px; font-size: 16px; min-width: unset; }
+}
+
+/* Accessibility helper: visually hidden (screen-reader only) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Secondary button (styles for #resetBtn - does not change display logic handled by JS) */
+button#resetBtn {
+  background: transparent;
+  color: var(--accent-2);
+  border: 2px solid rgba(87,81,212,0.12);
+  box-shadow: none;
+  padding: 10px 22px;
+  min-width: 120px;
+  border-radius: 999px;
+  font-weight: 700;
+  margin-top: 18px;
+  letter-spacing: 0.02em;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Enhanced Start button (primary) */
+button#startBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 160px;
+  padding: 14px 36px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: linear-gradient(180deg, #6c63ff 0%, #5751d4 100%);
+  border: 0;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(87,81,212,0.22), 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 220ms ease, filter 140ms ease;
+  outline: none;
+}
+
+/* decorative gloss on the Start button */
+button#startBtn::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 6px 14px rgba(108,99,255,0.16);
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+/* Hover / active states */
+button#startBtn:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(87,81,212,0.28);
+}
+
+button#startBtn:active:not(:disabled) {
+  transform: translateY(0) scale(0.995);
+}
+
+button#startBtn:focus-visible {
+  box-shadow: 0 0 0 6px rgba(108,99,255,0.12);
+  border-radius: 999px;
+}
+
+/* Disabled look keeps contrast but shows inactive state */
+button#startBtn:disabled {
+  background: linear-gradient(180deg, #bfbfff 0%, #d6d4ff 100%);
+  color: #fff;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Ensure both actions sit nicely on wider screens */
+@media (min-width: 420px) {
+  .card > button,
+  .card > #resetBtn {
+    display: inline-flex;
+  }
+
+  /* put Try Again to the right when both visible */
+  .card > #resetBtn { margin-left: 12px; margin-top: 18px; }
+}
+
+/* Larger touch targets on small screens */
+@media (max-width: 460px) {
+  button, button#resetBtn { padding: 14px 18px; border-radius: 12px; }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .card, button#startBtn, .card::before { transition: none !important; animation: none !important; transform: none !important; }
+}
+
+/* Prefer higher contrast */
+@media (prefers-contrast: more) {
+  :root {
+    --card-bg: #ffffff;
+  }
+  body { background: #0b0b0b; color: #fff; }
+  .card { border: 1px solid #fff; box-shadow: none; background-color: #0f0f0f; }
+  .result { box-shadow: none; border: 1px solid #fff; }
+  button { box-shadow: none; border: 2px solid #fff; }
+  button#resetBtn { background: transparent; color: #fff; border-color: #fff; }
+}
+
+/* Stronger, consistent focus for keyboard users (overrides earlier focus rules where appropriate) */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(108,99,255,0.14);
+  border-radius: 8px;
+}
